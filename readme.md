@@ -2,6 +2,8 @@
 
 ## NS Delays
 
+[Live Version](https://week02-ilfereqtvs.now.sh/)
+
 This app will give users more insights on the status of the train transportation. By combining the API provided by the NS and adding socket.io for real-time feedback users are able to check the status of the trains they need to take but can also add missing information. This information is directly available to all other users so they can act accordingly 
 
 ## Preview
