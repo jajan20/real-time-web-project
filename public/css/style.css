@@ -1,0 +1,85 @@
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Titillium Web', sans-serif;
+}
+
+form {
+	display:flex;
+	flex-direction: column;
+	width:22em;
+}
+
+label {
+	margin:1em 0 0 0;
+}
+
+.user-delays {
+	box-shadow: -10px 0px 0px 0px rgba(255,162,0,1);
+}
+
+.users {
+	padding:.2em;
+	background-color:rgba(255,162,0,1);
+	width:100%;
+}
+
+.ns-delays {
+	box-shadow: -10px 0px 0px 0px rgba(0,174,255,1);
+}
+
+.ns {
+	padding:.2em;
+	background-color:rgba(0,174,255,1);
+	width:100%;
+}
+
+div {
+	margin:2em 0 0 0;
+	display:flex;
+	width:30em;
+	justify-content: center;
+	text-align: center;
+}
+
+[type="submit"] {
+	margin:.5em;
+	padding:.5em;
+	background-color:#2795EE;
+	width:50%;
+	align-self: center;
+	border:none;
+}
+
+textarea {
+	padding:.5em;
+}
+
+section {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	margin:.5em;
+}
+
+article {
+	width:30em;
+	margin:.5em;
+	padding:.5em;
+}
+
+article:nth-child(even) {
+	background-color:#F3F5F6;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+#start-station, #end-station {
+	padding:1em;
+}
