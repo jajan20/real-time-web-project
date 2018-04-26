@@ -7,6 +7,8 @@
 	var startStation = document.getElementById('start-station')
 	var endStation = document.getElementById('end-station')
 	var delayReason = document.getElementById('delayReason')
+	var serverOffline = document.getElementById('serverOffline')
+	var nsWebsite = "<a href='https://www.ns.nl/reisinformatie/actuele-situatie-op-het-spoor'>NS Reisinformatie</a>"
 
 	// var timer = window.setInterval(function () {
  //    if (messages.length > 0)
@@ -48,4 +50,19 @@
 		delay.append(singleMessage)
 		delay.append(time)
 	})
+
+	socket.on('connect_error', function() {
+  		console.log('error')
+  		serverOffline.innerHTML = `It seems our servers are experiencing some issues, we're trying to reconnect. When the server reconnects this message will disappear. In the meantime check out the ${nsWebsite} for information about delays.`
+  		serverOffline.classList.remove('hide')
+  	})
+
+	socket.on('connect', function() {
+    	console.log('succes!')
+    	serverOffline.innerHTML = ''
+    	serverOffline.classList.add('hide')
+  })
+
+
+
 })()

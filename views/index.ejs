@@ -5,9 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700" rel="stylesheet">
-
 	<title>Train Issues</title>
-
 </head>
 
 <body>
@@ -15,7 +13,6 @@
 		<h1>Delays</h1>
 		<form id="delayForm">
 			<h2>Add issue</h2>
-			
 			<label>Begin station:</label>
 				<input id="start-station" list="start-stations" required>
 				<datalist id="start-stations">
@@ -38,38 +35,33 @@
 			<input type="submit" value="Submit issue">
 		</form>
 			
-			<div>
-				<span class="users">user added delays</span>
-				<span class="ns">ns added delays</span>
-			</div>
-			<% for (i = 0; i < messages.length; i++) { %>
-				<article class="user-delays">
-					<h2><%= messages[i].startStation + "-" + messages[i].endStation%></h2>
-					<p><%= messages[i].time%></p>
-					<p><%= messages[i].reason%></p>
-				</article>
-			<% } %>
+		<div>
+			<span class="users">user added delays</span>
+			<span class="ns">ns added delays</span>
+		</div>
+		<% for (i = 0; i < messages.length; i++) { %>
+			<article class="user-delays">
+				<h2><%= messages[i].startStation + "-" + messages[i].endStation%></h2>
+				<p><%= messages[i].time%></p>
+				<p><%= messages[i].reason%></p>
+			</article>
+		<% } %>
 
-			<% for (i = 0; i < data.Ongepland.length; i++) { %>
-				<article class="ns-delays">
-					<h2><%= data.Ongepland[i].Traject%></h2>
-					<p><%=  data.Ongepland[i].Reden%></p>
-					<p><%= data.Ongepland[i].Bericht%></p>
-					<p><%= data.Ongepland[i].Datum%></p>
-				</article>
-			<% } %>
-			
-
+		<% for (i = 0; i < data.Ongepland.length; i++) { %>
+			<article class="ns-delays">
+				<h2><%= data.Ongepland[i].Traject%></h2>
+				<p><%=  data.Ongepland[i].Reden%></p>
+				<p><%= data.Ongepland[i].Bericht%></p>
+				<p><%= data.Ongepland[i].Datum%></p>
+			</article>
+		<% } %>
 	</section>
 
-	<section>
-		<!-- <pre><%- JSON.stringify(data, null, 1)  %></pre> -->
-	</section>
-	
+	<footer id="serverOffline">
+	</footer>
+
 <script src="/socket.io/socket.io.js"></script>	
 <script src="../js/socket-io.js"></script>
+
 </body>
-
-
-
 </html>

@@ -83,3 +83,21 @@ pre {
 #start-station, #end-station {
 	padding:1em;
 }
+
+#serverOffline {
+	background-color:#FFB627;
+	position:fixed;
+	width:100%;
+	text-align:center;
+	bottom:0;
+	padding:.5em;
+}
+
+#serverOffline a {
+	color:black;
+	font-weight:700;
+}
+
+.hide {
+	display:none;
+}
