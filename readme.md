@@ -22,14 +22,16 @@ Once you press the submit button the values are pushed inside an array together 
 - [Data](#data)
 - [Life Cycle](#life-cycle)
 - [Events](#events)
+    - [User input](#user-input)
+    - [Server error](#server-error)
 - [Installation](#installation)
 - [Dependencies](#dependencies)
 - [Features](#features)
 - [Todo](#todo)
 - [Wishlist](#wishlist)
 - [Sources](#sources)
-- [Roadmap](#roadmap)
 - [Assignment Requirements](#assignment-requirements)
+- [Conclusion](#conclusion)
 
 ## Data
 The user is able to input data which in turn is stored locally on the server. While the server is running every user that joins the app gets to see all the delays added by other users on top of the delays already added by the NS-API.
@@ -40,6 +42,7 @@ The user is able to input data which in turn is stored locally on the server. Wh
 ![](https://raw.githubusercontent.com/jajan20/real-time-web/master/week_02/_assets/images/lifecycle.png)
 
 ## Events
+#### User input
 When a user inputs data, we need to send it to the server and empty the input fields. Doing this without refreshing is where socket.io comes in handy. A custom event **delay** where I prevent the submit button from refreshing, adding a new date object so that new users know when the delay has been added.
 
 ```js
@@ -57,6 +60,27 @@ When a user inputs data, we need to send it to the server and empty the input fi
         endStation.value = ''
     })
 ```
+
+#### Server error
+When my server goes offline, the user is prompted with an error message explaining that while the server is offline my app isn't reliable. Redirecting them to the NS Delay website.
+
+```js
+   socket.on('connect_error', function() {
+  		console.log('error')
+  		serverOffline.innerHTML = `It seems our servers are experiencing some issues, we're trying to reconnect. When the server reconnects this message will disappear. In the meantime check out the ${nsWebsite} for information about delays.`
+  		serverOffline.classList.remove('hide')
+  	})
+
+	socket.on('connect', function() {
+    	console.log('succes!')
+    	serverOffline.innerHTML = ''
+    	serverOffline.classList.add('hide')
+  })
+```
+
+![](https://raw.githubusercontent.com/jajan20/real-time-web-project/master/serverOfflineError.png)
+
+
 ## External datasource
 For this project I'm using the API provided by NS. (Dutch Railways). In order to make valid requests you need to register an account. They will provide a authorisation key which u need to use with a basic auth protocol.
 
@@ -119,6 +143,9 @@ When the app is running you can browse to the root URL and you'll get a list of 
 * Build a Node Web App which consumes an external data source through an API and serves a frontend using routing and templating techniques.
 * Create a "live" web app which reflects changes to the back-end data model in reactive front-end views, using real-time, event-based, messaging technologies like sockets or server-sent-events.
 * Describe their work in a professional readme with insightful diagrams showing the life cycle of their data.
+
+## Conclusion
+At first, I was afraid that this assignment was too hard for me. But after diving into the resources I managed to come up with a simple, working real-time application. I'm still having trouble understanding a couple of things but at least I'm at a level that when given enough time I can figure most of it out.
 
 <!-- Maybe a table of contents here? 📚 -->
 
